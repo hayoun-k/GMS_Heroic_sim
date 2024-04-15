@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SF Simulator</title>
+  <link rel="shortcut icon" href="./resources/images/oreo.svg" type="image/x-icon">
+  <link rel="stylesheet" href="./resources/css/style.css">
+  <script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <div class="body-container">
+    <div class="wrapper">
+      <header>
+        <nav class="">
+            <div class="logo-container">
+              <a class="" data-toggle="modal" data-target="#myModal">
+                <img src="./resources/images/oreo.svg" alt="logo" class="logo" id="logo">
+              </a>
+            </div>
+            <script src="./load.js"></script>
+            <ul class="nav-menu" id="navbar">
+              <li><a href="#about" id="defaultClick" class="nav-link">About</a></li>
+              <li><a href="#starforce" id="autosim" class="nav-link" onclick="toggleMenu()">Starforce Simulator</a></li>
+              <li><a href="#sfsimresult" id="restab" class="nav-link" onclick="toggleMenu()">Result</a></li>
+              <li><a href="#sflogs" id="logtab" class="nav-link" onclick="toggleMenu()">Logs</a></li>
+              <li><a href="#sfcosttable" class="nav-link" onclick="toggleMenu()">Cost Table</a></li>
+              <li><a href="#sfprobtable" class="nav-link" onclick="toggleMenu()">Rate Table</a></li>
+            </ul>
+            <a href="javascript:void(0);" class="oreo" onclick="toggleMenu()">
+              <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" id="oreo-top" class="oreo-inside">
+                <ellipse cx="50" cy="50" rx="50" ry="10" fill="#3B2B23"/>
+                <ellipse cx="50" cy="50" rx="45" ry="9" fill="#2D211B"/>
+                <ellipse cx="50" cy="50" rx="40" ry="8" fill="#3B2B23"/>
+              </svg>              
+              <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" id="oreo-mid" class="oreo-inside">
+                <ellipse cx="50" cy="50" rx="40" ry="8" fill="#FFF"/>
+              </svg>
+              <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" id="oreo-bot" class="oreo-inside">
+                <ellipse cx="50" cy="50" rx="50" ry="10" fill="#3B2B23"/>
+                <ellipse cx="50" cy="50" rx="45" ry="9" fill="#2D211B"/>
+                <ellipse cx="50" cy="50" rx="40" ry="8" fill="#3B2B23"/>
+              </svg>
+            </a>
+        </nav>
+        <script src="./menu.js"></script>
+        <section class="modal"></section>
+      </header>
+      <main>
+        <section class="tabs about" id="about">
+          <div>
+            <h2 class="tab-title">This is web Starforce simulator for Oreo guild.</h2>
+            <p>Questions? Join our Discord!</p>
+          </div>
+        </section>
+        <section class="tabs starforce" id="starforce">
+          <div class="left">
+            <h2 class="greeting tab-title">Welcome to SF casino</h2>
+            <div class="form-container">
+              <form class="sf-form">
+                <div class="info equipment">
+                  <h3 class="subtitle">Equipment Info</h3>
+                  <div class="form-group">
+                    <label for="itemlv">Item Level</label>
+                    <input type="number" id="itemlv" name="itemlv" required min="0" max="999" size="5">
+                  </div>
+                  <div class="form-group">
+                    <label for="startingstar">Number of stars existing</label>
+                    <input type="number" id="startingstar" name="startingstar" required min="0" max="25" size="4">
+                  </div>
+                  <div class="form-group">
+                    <label for="goal">Goal</label>
+                    <input type="number" id="goal" name="goal" required min="0" max="25" size="4">
+                  </div>
+                  <div class="form-group">
+                    <label for="piece">How many pieces?</label>
+                    <input type="number" id="piece" name="piece" required min="0" max="25" size="4">
+                  </div>
+                </div>
+                <div class="info details">
+                  <h3 class="subtitle">Details</h3>
+                  <div class="btn-group">
+                    <h4>Star Catch</h4>
+                    <label for="nocatch" class="btn choice">
+                      <input type="radio" id="nocatch" name="starcatch" value="0" checked>
+                      WTH is star catch? (No Starcatch)
+                    </label>
+                    <label for="catch" class="btn choice">
+                      <input type="radio" id="catch" name="starcatch" value="5">
+                      I can do this all day.
+                    </label>
+                  </div>
+                  <div class="btn-group">
+                    <h4>Starforcing events</h4>
+                    <label class="btn choice">
+                      <input type="radio" name="events" id="sfev1" value="1" checked>
+                      Who cares about event?
+                    </label>
+                    <label class="btn choice">
+                      <input type="radio" name="events" id="sfev2" value="2">
+                      30% off
+                    </label>
+                    <label class="btn choice">
+                      <input type="radio" name="events" id="sfev3" value="3">
+                      100% at 5, 10, 15
+                    </label>
+                    <label class="btn choice">
+                      <input type="radio" name="events" id="sfev4" value="4">
+                      Shining StarForce
+                    </label>
+                  </div>
+                  <div class="btn-group">
+                    <h4>Safeguard</h4>
+                    <label class="btn choice">
+                      <input type="radio" name="safeguard" id="sfsg1" value="0" checked>
+                      No Safeguard
+                    </label>
+                    <label class="btn choice">
+                      <input type="radio" name="safeguard" id="sfsg2" value="2">
+                      Safeguard
+                    </label>
+                  </div>
+                  <div class="btn-group">
+                    <h4>MVP</h4>
+                    <label class="btn choice">
+                      <input type="radio" name="mvp" id="mvp1" value="0" checked>
+                      MVP Bronze
+                    </label>
+                    <label class="btn choice">
+                      <input type="radio" name="mvp" id="mvp2" value="0.03">
+                      Silver
+                    </label>
+                    <label class="btn choice">
+                      <input type="radio" name="mvp" id="mvp3" value="0.05">
+                      Gold
+                    </label>
+                    <label class="btn choice">
+                      <input type="radio" name="mvp" id="mvp4" value="0.1">
+                      Diamond
+                    </label>
+                  </div>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" name="nolog" id="nolog" class='form-check-input'>
+                  <label for="nolog" class="form-check-label">don't show logs (faster results)</label>
+                </div>
+                <button type="button" class="btn btn-dark submit" onclick="starForce()">Start Enhancement</button>
+              </form>
+            </div>
+          </div>
+          <div class="right desktop-only">
+            <div class="magicpattern"></div>
+          </div>
+        </section>
+    
+          <section class="tabs result" id="sfsimresult">
+            <h2 class="tab-title">Please run the simulator first.</h2>
+            <h2 class="tab-title">Simulation Result</h2>
+            <div class="container">
+              <div id="myDiv">
+              </div>
+              <ul class="res textbox" id="resinside">
+                
+              </ul>
+            </div>
+          </section>
+          <section class="tabs log" id="sflogs">
+            <div class="">
+                <div>
+                  <h2 class="tab-title">Please run the simulator first.</h2>
+                  <h2 class="tab-title">Logs</h2>
+                  <ul class="container" id="loginside"></ul>
+                </div>
+              </div>
+          </section>
+          <section class="tabs cost" id="sfcosttable">
+            <h2 class="tab-title">Starforce Cost Table</h2>
+            <div class="container">
+              <form name = "sftbl">
+              <input type="number" class="form-control" autocomplete="off"
+              id="sftlev" name="sftlev" onkeyup="showSfTable()" placeholder="Enter item lv.(100 or up)">
+              </form>
+              <div id="showsftable">
+              </div>
+            </div>
+          </section>
+          <section class="tabs rate" id="sfprobtable">
+            <h2 class="tab-title">Starforce Rate Table</h2>
+            <div class="container">
+                <form name="stfprob">
+                  <button type="button" class="btn btn-dark btn-lg" onclick="sfprobtable()">No starcatch
+                  </button>
+                  <button type="button" class="btn btn-dark btn-lg" onclick="sfprobtable_catch()">Starcatch
+                  </button>
+                </form>
+                <div id="protinside">
+                </div>
+              </div>
+          </section>
+    
+      </main>
+      <footer></footer>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
