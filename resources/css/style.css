@@ -263,27 +263,17 @@ section.tabs {
 
 /* about */
 
-.about {
-  animation: fadein 1.5s ease-in-out;
-}
-
 .about h2 {
   background-color: var(--var-clr-pink);
-
 }
 
-@keyframes fadein {
-  0% {
-    opacity: 0;
-  }
+.about p {
+  text-align: center;
+  line-height: 1.4;
+}
 
-  66% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+.about p:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
 /* starforce */
