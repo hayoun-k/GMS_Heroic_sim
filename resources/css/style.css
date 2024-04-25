@@ -133,7 +133,14 @@ header nav {
   justify-content: space-between;
 }
 
+.logo-container {
+  flex: 0 0 24px;
+  display: flex;
+  align-items: center;
+}
+
 .logo-container a {
+  margin-right: 2rem;
   line-height: 0;
   display: block;
 }
@@ -152,7 +159,9 @@ header nav {
 
 .nav-menu li {
   display: flex;
+  justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .nav-link {
@@ -195,7 +204,7 @@ header nav {
   transform: translateY(calc(-35px + 5px)) scaleX(45%);
 }
 
-@media screen and (width < 400px) {
+@media screen and (width < 890px) {
   .nav-menu {
     display: none;
   }
@@ -207,6 +216,7 @@ header nav {
     right: 0;
     top: 100px;
     background-color: white;
+    border: 2.5px solid black;
     box-shadow: 4px 4px 0px black;
     border-radius: 15px;
     z-index: 1;
